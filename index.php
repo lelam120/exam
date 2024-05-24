@@ -1,14 +1,18 @@
 <?php
-  // query to DB 
-  //1. connect db
-    $host = "localhost";
+    $host = "localhost:8889";
     $user = "root";
     $pass = "root";
-    $db = "t2311e php";
+    $db = "exam";
 
     $conn = new mysqli($host,$user,$pass,$db);
     if($conn->connect_error){
       die("Connect database failed");
+    }
+    $sql = "SELECT * FROM contacts";
+    $result = $conn->query($sql);
+    $list = [];
+    while($row = $result->fetch_assoc()){
+      $list[] = $row;
     }
 ?>
 <!DOCTYPE html>
@@ -22,8 +26,8 @@
 
 </head>
 <body>
-  <div class="container">
-    <a href="/create_product.php">Create a new product</a>
+<div class="container">
+    <a href="/add_contact.php">Create a new contact</a>
     <table class="table">
   <thead>
     <tr>
@@ -40,14 +44,14 @@
       <td><?php echo $item["name"];?></td>
       <td><?php echo $item["phone_number"];?></td>
       <td><?php echo $item["email"];?></td>
-      <td><a href="/edit_contract.php?id=<?php echo $item["id"]; ?>">Edit</a></td>
-      <td><a onclick="return confirm('Are you sure delete contract?')" 
-          class="text-danger" href="/delete_contract.php?id=<?php echo $item["id"]; ?>">
+      <td><a href="/edit_contact.php?id=<?php echo $item["id"]; ?>">Edit</a></td>
+      <td><a onclick="return confirm('Are you sure delete contact?')" 
+          class="text-danger" href="/delete_contact.php?id=<?php echo $item["id"]; ?>">
           Delete</a></td>
     </tr>
     <?php endforeach;?>
   </tbody>
-</table>
-    </div>
+  </table>
+</div>
 </body>
 </html>

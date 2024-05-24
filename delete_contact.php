@@ -2,7 +2,7 @@
 $id = $_GET["id"];
 
 // code save to db
-$host = "localhost";
+$host = "localhost:8889";
 $user = "root";
 $pass = "root";
 $db = "exam";
@@ -11,6 +11,6 @@ $conn = new mysqli($host,$user,$pass,$db);
 if($conn->connect_error){
   die("Connect database failed");
 }
-$sql = "DELETE FROM contracts WHERE id = $id";
+$sql = "DELETE FROM contacts WHERE id = $id";
 $conn->query($sql);
-header("Location: /demo3.php");
+header("Location: /index.php");

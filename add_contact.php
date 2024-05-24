@@ -10,14 +10,14 @@
 <body>
     <div class="container">
         <h1>Add New Contract</h1>
-    <form action="/save_product.php" method="post">
+    <form action="/save_contact.php" method="post">
         <div class="mb-3">
             <label class="form-label">Name</label>
             <input type="text" name="name" class="form-control" >
         </div>
         <div class="mb-3">
             <label class="form-label">phone number</label>
-            <input type="number" name="phone number" class="form-control" >
+            <input type="number" name="phone_number" class="form-control" >
         </div>
         <div class="mb-3">
             <label class="form-label">email</label>
