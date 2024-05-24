@@ -4,22 +4,11 @@
     $host = "localhost";
     $user = "root";
     $pass = "root";
-    $db = "t2311e_php";
+    $db = "t2311e php";
 
     $conn = new mysqli($host,$user,$pass,$db);
     if($conn->connect_error){
       die("Connect database failed");
-    }
-  //2. query SQL
-     // 2.1. Lấy tham số
-     $limit = isset($_GET["limit"]) && $_GET["limit"]!= "" ?$_GET["limit"]:20;
-     $search = isset($_GET["search"])?$_GET["search"]:"";
-     //2.2. áp dụng giá trị tham số vào truy vấn
-    $sql = "SELECT * FROM products WHERE name LIKE '%$search%' LIMIT $limit";
-    $result = $conn->query($sql);
-    $list = [];
-    while($row = $result->fetch_assoc()){
-      $list[] = $row;
     }
 ?>
 <!DOCTYPE html>
@@ -34,32 +23,14 @@
 </head>
 <body>
   <div class="container">
-    <form action="/demo3.php" method="GET">
-        <div class="row">
-          <div class="col">
-          <input value="<?php echo $search; ?>" name="search" placeholder="Search" type="text" class="form-control"/>
-          </div>
-          <div class="col">
-            <input value="<?php echo $limit; ?>" name="limit" placeholder="Limit" type="number" class="form-control"/>
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-    </form>
-  </div>
-  <div class="container">
     <a href="/create_product.php">Create a new product</a>
     <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Description</th>
-      <th scope="col">Qty</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
+      <th scope="col">Phone number</th>
+      <th scope="col">email</th>
     </tr>
   </thead>
   <tbody>
@@ -67,12 +38,11 @@
     <tr>
       <th scope="row"><?php echo $item["id"];?></th>
       <td><?php echo $item["name"];?></td>
-      <td><?php echo $item["price"];?></td>
-      <td><?php echo $item["description"];?></td>
-      <td><?php echo $item["qty"];?></td>
-      <td><a href="/edit_product.php?id=<?php echo $item["id"]; ?>">Edit</a></td>
-      <td><a onclick="return confirm('Are you sure delete product?')" 
-          class="text-danger" href="/delete_product.php?id=<?php echo $item["id"]; ?>">
+      <td><?php echo $item["phone_number"];?></td>
+      <td><?php echo $item["email"];?></td>
+      <td><a href="/edit_contract.php?id=<?php echo $item["id"]; ?>">Edit</a></td>
+      <td><a onclick="return confirm('Are you sure delete contract?')" 
+          class="text-danger" href="/delete_contract.php?id=<?php echo $item["id"]; ?>">
           Delete</a></td>
     </tr>
     <?php endforeach;?>

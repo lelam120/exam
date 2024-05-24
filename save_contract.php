@@ -8,7 +8,7 @@ $description = $_POST["description"];
 $host = "localhost";
 $user = "root";
 $pass = "root";
-$db = "t2311e_php";
+$db = "t2311e php";
 
 $conn = new mysqli($host,$user,$pass,$db);
 if($conn->connect_error){
